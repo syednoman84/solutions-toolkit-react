@@ -164,9 +164,3 @@ The built files land in `frontend/dist/` and can be served by any static file se
 ## 📄 License
 
 Internal use only.
-
----
-
-<p align="center">
-  Made with ❤️ for the PCM team
-</p>
