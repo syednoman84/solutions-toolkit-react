@@ -1,0 +1,99 @@
+#################################################
+# INPUTS
+#################################################
+# Github URL for the tenant config repo
+destination_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-evb-deploy.git
+
+# Placeholders values for env files
+tenant-domain=evb
+tenant-id=evb
+
+# List of Products to be created
+Consumer_DAO_Product_1=Eagle Free Checking (150)
+Consumer_DAO_Product_2=Easy Interest Checking (151)
+Consumer_DAO_Product_3=Elite Interest Checking (152)
+Consumer_DAO_Product_4=Benefits Checking (153)
+Consumer_DAO_Product_5=Money Market (101)
+Consumer_DAO_Product_6=Passbook Savings (200)
+Consumer_DAO_Product_7=Digital CD Products
+SMB_DAO_Product_1=Eagle Free Business Checking (154)
+SMB_DAO_Product_2=Business Interest Checking (155)
+SMB_DAO_Product_3=Commercial Checking (156)
+
+
+
+
+
+
+
+
+SSO_Connection_1=SSO, SerProd1-gbt-SAMLAD, /oauth2/authorization/connection19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Tag name for template_vars repo (optional, uses default branch if not specified)
+template_vars_tag=12.5.1
+
+# Set your PR title or it will default to Automated setup script changes
+pr_title=SCS-3046 New Tenant Configuration and Products Setup
+commit_message=SCS-3046 Configs and Products for new PCM Tenant by Automation Script
+
+#################################################
+# THINGS TO NOT CHANGE FOR EVERY TENANT SETUP UNLESS YOU WANT TO UPDATE PATHS AS PER YOUR MACHINE
+#################################################
+
+# Working directory for everything (relative to project root)
+workingDirectory=/Users/NomanAhmed/Documents/Noman/code/github/a3/solutions-toolkit/pcm-tenant-products-setup-tool/results
+
+# Configures the branch name that you want to create in the tenant config repo
+branchName=feature/SCS-3046
+
+# Github URL for the baseline files for app and env files
+static_files_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-slt-deploy.git
+
+# Github URL for the Platform Configs for template_vars
+template_vars_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-platform-deploy.git
+
+# template_vars directory path for each Product Type
+TEMPLATE_PATHS=Consumer_CC:product-type/credit-card-self-service/default-variables,Consumer_DAO:product-type/consumer-dao/default-variables,SMB_DAO:product-type/smb-dao/default-variables,SMB_CC:product-type/smb-credit-card/default-variables,SMB_LOC:product-type/smb-loc/default-variables,SMB_TL:product-type/smb-tl/default-variables
+
+# Product Type Mapping for definition.json
+PRODUCT_TYPE_MAP=Consumer_CC:CREDIT_CARD_SELF_SERVICE,Consumer_DAO:CONSUMER_DAO,SMB_DAO:SMB_DAO,SMB_CC:SMB_CREDIT_CARD,SMB_LOC:SMB_LOC,SMB_TL:SMB_TL
+
+# Policy Name Mapping for definition.json
+PRODUCT_POLICY_MAP=Consumer_CC:catalyst-cc-policy-poc,Consumer_DAO:amt-consumer-dao-policy,SMB_DAO:amt-smb-dao-policy,SMB_CC:amt-smb-credit-card-policy,SMB_LOC:amt-smb-loc-policy,SMB_TL:amt-smb-tl-policy
+
+# Product Type Name Mapping for definition.json
+PRODUCT_TYPE_NAME_MAP=Consumer_CC:Credit Card Self Service,Consumer_DAO:Consumer Deposit Account,SMB_DAO:Deposit Account,SMB_CC:SMB Credit Card,SMB_LOC:Business Line of Credit,SMB_TL:Business Term Loan
+
+# Deletes everything after execution if sets to true
+cleanup_after_run=false
