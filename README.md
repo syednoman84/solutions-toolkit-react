@@ -36,6 +36,7 @@
 | 📝 Add Changelog | Create changelog JSON files in each product's `pending-changes` branch |
 | 👁️ View Products by Tenant | Fetch and display all product definitions for a tenant in a table |
 | 🔍 Scan All Tenants | Scan every tenant repo in the org and generate product reports (JSON, counts, type breakdowns) |
+| 💳 Configure NACHA Files | Add NACHA payment gateway config files (`file_options.json`, `vendor.json`, `nachaPg.json`) and update env files for a tenant |
 | ✅ Validation | Verify template vars, env file placeholders, and product summaries post-setup |
 
 ---
@@ -46,7 +47,7 @@
 📦 pcm-toolkit
 ├── 🖥️ frontend/               # React TypeScript app (Vite)
 │   ├── src/
-│   │   ├── 📄 pages/          # 9 page components (1:1 with features)
+│   │   ├── 📄 pages/          # 10 page components (1:1 with features)
 │   │   ├── 🧩 components/     # Shared UI components
 │   │   ├── 🪝 hooks/          # Custom React hooks
 │   │   ├── 🌐 api.ts          # Typed API client
@@ -68,7 +69,10 @@
 │   └── validate_env_files.py
 │
 ├── 📂 params/
-│   └── params.txt              # Configuration file (read/written by API)
+│   ├── params.txt              # Configuration file (read/written by API)
+│   ├── nacha_file_options_default.txt   # Default NACHA file_options.json template
+│   ├── nacha_vendor_default.txt         # Default NACHA vendor.json template
+│   └── nacha_nachapg_default.txt        # Default NACHA nachaPg.json template
 │
 └── 🚀 start-dev.sh            # One-command dev startup
 ```
@@ -136,6 +140,18 @@ All scripts read from `params/params.txt`. The web UI loads and saves this file 
 | `branchName` | 🌿 Feature branch name |
 | `commit_message` | 💬 Commit message |
 | Products | 📦 `Consumer_DAO_Product_1=Eagle Free Checking (150)` |
+
+### 💳 NACHA Configuration
+
+The Configure NACHA Files feature uses its own default template files in `params/`:
+
+| File | Description |
+|------|-------------|
+| `nacha_file_options_default.txt` | Default JSON for `app/payment-gateway/nacha/file_options.json` |
+| `nacha_vendor_default.txt` | Default JSON for `app/payment-gateway/nacha/vendor.json` |
+| `nacha_nachapg_default.txt` | Default JSON for `app/template_vars/nachaPg.json` |
+
+These templates are pre-populated in the UI when the feature loads. Edit the txt files to change the defaults without modifying code. Existing `env/serenityprdpr.json` and `env/serenityprod1.json` files are loaded directly from the cloned repo and only included in the PR if the user modifies them.
 
 ### 📦 Supported Product Types
 
