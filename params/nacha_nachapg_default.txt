@@ -1,0 +1,49 @@
+{
+  "batch_options": {
+    "account_opening": {
+      "batch_description": "ACCT FUND",
+      "eff_date_offset": {
+        "debit": 0,
+        "credit": 2
+      }
+    },
+    "issuance": {
+      "batch_description": "LOAN DISB",
+      "eff_date_offset": {
+        "debit": 1,
+        "credit": 1
+      }
+    },
+    "company_name": "GUARANTEED RATE INC",
+    "originating_dfi": "09100001",
+    "direct_company_id": "3643278551"
+  },
+  "encryption": {
+    "encrypt_batches": true
+  },
+  "file_options": {
+    "credit": {
+      "immediate_destination": "091000019",
+      "immediate_destination_name": "WELLS FARGO",
+      "origin": "3643278551",
+      "origin_name": "GUARANTEED RATE INC",
+      "file_id_modifier": "A",
+      "always_increment_trace": false,
+      "use_individual_id_number_trace": false,
+      "file_extension": "txt"
+    },
+    "debit": {
+      "immediate_destination": "091000019",
+      "immediate_destination_name": "WELLS FARGO",
+      "origin": "3643278551",
+      "origin_name": "GUARANTEED RATE INC",
+      "file_id_modifier": "A",
+      "always_increment_trace": false,
+      "use_individual_id_number_trace": false,
+      "file_extension": "txt"
+    }
+  },
+  "sftp": {
+    "use_sftp_key": true
+  }
+}

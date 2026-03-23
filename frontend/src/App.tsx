@@ -8,6 +8,7 @@ import ViewProductsByTenant from './pages/ViewProductsByTenant'
 import ScanAllTenants from './pages/ScanAllTenants'
 import RebasePendingChanges from './pages/RebasePendingChanges'
 import AddChangelogToPending from './pages/AddChangelogToPending'
+import ConfigureNachaFiles from './pages/ConfigureNachaFiles'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
       <Route path="/scan-all-tenants" element={<ScanAllTenants />} />
       <Route path="/rebase-pending-changes" element={<RebasePendingChanges />} />
       <Route path="/add-changelog-to-pending" element={<AddChangelogToPending />} />
+      <Route path="/configure-nacha-files" element={<ConfigureNachaFiles />} />
     </Routes>
   )
 }

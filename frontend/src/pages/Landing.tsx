@@ -9,6 +9,7 @@ const workflows = [
   { to: '/add-changelog-to-pending', icon: '📝', title: 'Add Change Log File', subtitle: 'to Pending-Changes Branches', desc: 'Add a changelog JSON file to each product\'s pending-changes branch' },
   { to: '/view-products-by-tenant', icon: '🔍', title: 'View Products by Tenant', subtitle: '', desc: 'Fetch and view all products for a specific tenant' },
   { to: '/scan-all-tenants', icon: '📊', title: 'Scan All Tenants', subtitle: '', desc: 'Provides details of all the products used by Tenants' },
+  { to: '/configure-nacha-files', icon: '💳', title: 'Configure NACHA Files', subtitle: '', desc: 'Add NACHA payment gateway configuration files to a tenant' },
 ]
 
 export default function Landing() {

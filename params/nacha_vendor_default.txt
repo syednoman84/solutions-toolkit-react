@@ -1,0 +1,37 @@
+{
+  "vendor": {
+    "guaranteed_rate": {
+      "tenant_id": "grt",
+      "file_name": "GUARANTEED_RATE_NACHA",
+      "match_on_product_and_trace_number": false,
+      "relevant_clients": [
+        "guaranteed_rate"
+      ],
+      "cut_off_time": "14:00:00",
+      "batch_payment_methods": [
+        "issuance",
+        "reversal"
+      ],
+      "payment_methods": {
+        "issuance": {
+          "post_send_workers": [
+            "AutoCompleteWorker"
+          ],
+          "periodic_workers": {
+            "execution_batch_worker": {
+              "schedule": "0 14 * * 1,2,3,4,5",
+              "run_during_holidays": false
+            },
+            "vendor_return_worker": "0 0,9,14,15,16,17,18 * * *"
+          },
+          "execution_batches_per_day": 1
+        },
+        "reversal": {
+          "post_send_workers": [
+            "AutoCompleteWorker"
+          ]
+        }
+      }
+    }
+  }
+}

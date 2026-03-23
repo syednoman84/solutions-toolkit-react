@@ -44,5 +44,16 @@ export const rebaseRunCommand = (repoPath: string, command: string): Promise<Scr
 export const createChangelog = (repoPath: string, productId: string, jsonContent: string) =>
   post('/api/rebase/create-changelog', { repoPath, productId, jsonContent })
 
+// NACHA
+export const nachaDefaults = (): Promise<{ fileOptions: string; vendor: string; nachaPg: string }> =>
+  fetch('/api/nacha/defaults').then(json)
+export const nachaClone = (repoUrl: string, branchName: string): Promise<{ repoPath: string; repoName: string; envFiles: Record<string, string | null>; error?: string }> =>
+  post('/api/nacha/clone', { repoUrl, branchName })
+export const nachaRun = (data: {
+  repoPath: string; prTitle: string; commitMessage: string; branchName: string;
+  fileOptionsJson: string; vendorJson: string; nachaPgJson: string;
+  serenityprdprJson?: string; serenityprod1Json?: string;
+}): Promise<ScriptResult> => post('/api/nacha/run', data)
+
 // Readme
 export const getReadme = (): Promise<{ content: string }> => fetch('/api/readme').then(json)

@@ -1,0 +1,24 @@
+{
+  "credit": {
+    "immediate_destination": "${nachaPg.file_options.credit.immediate_destination}",
+    "immediate_destination_name": "${nachaPg.file_options.credit.immediate_destination_name}",
+    "origin": "${nachaPg.file_options.credit.origin}",
+    "origin_name": "${nachaPg.file_options.credit.origin_name}",
+    "file_id_modifier": "${nachaPg.file_options.credit.file_id_modifier}",
+    "always_increment_trace": "${nachaPg.file_options.credit.always_increment_trace}",
+    "use_individual_id_number_trace": "${nachaPg.file_options.credit.use_individual_id_number_trace}",
+    "file_extension": "${nachaPg.file_options.credit.file_extension}",
+    "deposit_path": "${env.payment_gateway.deposit_path.credit}"
+  },
+  "debit": {
+    "immediate_destination": "${nachaPg.file_options.debit.immediate_destination}",
+    "immediate_destination_name": "${nachaPg.file_options.debit.immediate_destination_name}",
+    "origin": "${nachaPg.file_options.debit.origin}",
+    "origin_name": "${nachaPg.file_options.debit.origin_name}",
+    "file_id_modifier": "${nachaPg.file_options.debit.file_id_modifier}",
+    "always_increment_trace": "${nachaPg.file_options.debit.always_increment_trace}",
+    "use_individual_id_number_trace": "${nachaPg.file_options.debit.use_individual_id_number_trace}",
+    "file_extension": "${nachaPg.file_options.debit.file_extension}",
+    "deposit_path": "${env.payment_gateway.deposit_path.debit}"
+  }
+}
