@@ -2,23 +2,17 @@
 # INPUTS
 #################################################
 # Github URL for the tenant config repo
-destination_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-evb-deploy.git
+destination_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-fng-deploy
 
 # Placeholders values for env files
-tenant-domain=evb
-tenant-id=evb
+tenant-domain=solutionstraining
+tenant-id=slt
 
 # List of Products to be created
-Consumer_DAO_Product_1=Eagle Free Checking (150)
-Consumer_DAO_Product_2=Easy Interest Checking (151)
-Consumer_DAO_Product_3=Elite Interest Checking (152)
-Consumer_DAO_Product_4=Benefits Checking (153)
-Consumer_DAO_Product_5=Money Market (101)
-Consumer_DAO_Product_6=Passbook Savings (200)
-Consumer_DAO_Product_7=Digital CD Products
-SMB_DAO_Product_1=Eagle Free Business Checking (154)
-SMB_DAO_Product_2=Business Interest Checking (155)
-SMB_DAO_Product_3=Commercial Checking (156)
+SMB_DAO_Product_1=Business Savings
+
+
+SSO_Connection_1=Demo Client, SerProd1-dmo-SAMLPD, /oauth2/authorization/connection29
 
 
 
@@ -27,7 +21,9 @@ SMB_DAO_Product_3=Commercial Checking (156)
 
 
 
-SSO_Connection_1=SSO, SerProd1-gbt-SAMLAD, /oauth2/authorization/connection19
+
+
+
 
 
 
@@ -61,21 +57,21 @@ SSO_Connection_1=SSO, SerProd1-gbt-SAMLAD, /oauth2/authorization/connection19
 
 
 # Tag name for template_vars repo (optional, uses default branch if not specified)
-template_vars_tag=12.5.1
+template_vars_tag=13.3.0
 
 # Set your PR title or it will default to Automated setup script changes
-pr_title=SCS-3046 New Tenant Configuration and Products Setup
-commit_message=SCS-3046 Configs and Products for new PCM Tenant by Automation Script
+pr_title=SCS-3072 Add New SMB Product 
+commit_message=SCS-3027 - Add new SMB Product
 
 #################################################
 # THINGS TO NOT CHANGE FOR EVERY TENANT SETUP UNLESS YOU WANT TO UPDATE PATHS AS PER YOUR MACHINE
 #################################################
 
 # Working directory for everything (relative to project root)
-workingDirectory=/Users/NomanAhmed/Documents/Noman/code/github/a3/solutions-toolkit/pcm-tenant-products-setup-tool/results
+workingDirectory=/Users/NomanAhmed/Documents/Noman/code/github/a3/solutions-toolkit-react/results
 
 # Configures the branch name that you want to create in the tenant config repo
-branchName=feature/SCS-3046
+branchName=feature/SCS-3072
 
 # Github URL for the baseline files for app and env files
 static_files_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-slt-deploy.git
