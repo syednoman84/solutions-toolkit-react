@@ -167,7 +167,7 @@ export default function NewTenantSetup() {
         <div className="content">
           <h2>ℹ️ About</h2>
           <div className="info-box">
-            <h3>PCM Tenants Configuration Toolkit</h3>
+            <h3>Solutions Toolkit for PCM Tenants</h3>
             <p style={{ marginTop: 10 }}>This tool automates the process of setting up tenant configurations by:</p>
             <ul style={{ marginLeft: 20, marginTop: 10 }}>
               <li>📥 Cloning repositories</li>

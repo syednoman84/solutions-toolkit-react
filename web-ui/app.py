@@ -526,11 +526,16 @@ def rebase_clone():
     """Clone the tenant repo and return list of product UUIDs."""
     data = request.json or {}
     tenant_id = data.get('tenantId', '').strip()
-    if not tenant_id:
-        return jsonify({'error': 'Tenant ID is required'}), 400
+    repo_url = data.get('repoUrl', '').strip()
 
-    repo_name = f"ODXP-DPLOY--odx-config-{tenant_id}-deploy"
-    repo_url = f"https://git.shared.linearft.tools/odx-platform-configs/{repo_name}.git"
+    if not tenant_id and not repo_url:
+        return jsonify({'error': 'Tenant ID or Repository URL is required'}), 400
+
+    if repo_url:
+        repo_name = repo_url.rstrip('/').rstrip('.git').split('/')[-1]
+    else:
+        repo_name = f"ODXP-DPLOY--odx-config-{tenant_id}-deploy"
+        repo_url = f"https://git.shared.linearft.tools/odx-platform-configs/{repo_name}.git"
     repo_path = REBASE_WORK_DIR / repo_name
 
     # Clean up previous clone

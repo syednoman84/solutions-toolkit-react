@@ -17,7 +17,7 @@ export default function Landing() {
   return (
     <div className="container">
       <div className="header">
-        <h1>PCM Tenants Configuration Toolkit</h1>
+        <h1>Solutions Toolkit for PCM Tenants</h1>
         <p>Automated tenant configuration management with validation</p>
       </div>
       <div className="landing-page">

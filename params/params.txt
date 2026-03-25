@@ -2,17 +2,20 @@
 # INPUTS
 #################################################
 # Github URL for the tenant config repo
-destination_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-fng-deploy
+destination_repo_github_url=https://git.shared.linearft.tools/noman-ahmed/ODXP-DPLOY--odx-test-config-slt-deploy
 
 # Placeholders values for env files
 tenant-domain=solutionstraining
 tenant-id=slt
 
 # List of Products to be created
-SMB_DAO_Product_1=Business Savings
+SSO_Connection_1=Velera Employee, SerProd1-slt-SAMLPD, /oauth2/authorization/connection90
 
 
-SSO_Connection_1=Demo Client, SerProd1-dmo-SAMLPD, /oauth2/authorization/connection29
+
+
+
+
 
 
 
@@ -60,8 +63,8 @@ SSO_Connection_1=Demo Client, SerProd1-dmo-SAMLPD, /oauth2/authorization/connect
 template_vars_tag=13.3.0
 
 # Set your PR title or it will default to Automated setup script changes
-pr_title=SCS-3072 Add New SMB Product 
-commit_message=SCS-3027 - Add new SMB Product
+pr_title=Adding SSO Connection
+commit_message=Adding SSO Connection
 
 #################################################
 # THINGS TO NOT CHANGE FOR EVERY TENANT SETUP UNLESS YOU WANT TO UPDATE PATHS AS PER YOUR MACHINE
@@ -71,7 +74,7 @@ commit_message=SCS-3027 - Add new SMB Product
 workingDirectory=/Users/NomanAhmed/Documents/Noman/code/github/a3/solutions-toolkit-react/results
 
 # Configures the branch name that you want to create in the tenant config repo
-branchName=feature/SCS-3072
+branchName=feature/SCS-XYZ-sso
 
 # Github URL for the baseline files for app and env files
 static_files_repo_github_url=https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-slt-deploy.git

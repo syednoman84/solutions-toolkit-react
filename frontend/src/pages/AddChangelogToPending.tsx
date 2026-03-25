@@ -4,6 +4,7 @@ import * as api from '../api'
 
 export default function AddChangelogToPending() {
   const [tenantId, setTenantId] = useState('')
+  const [repoUrl, setRepoUrl] = useState('https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-tenantId-deploy.git')
   const [jsonContent, setJsonContent] = useState('')
   const [commitMessage, setCommitMessage] = useState('Add changelog file')
   const [loading, setLoading] = useState(false)
@@ -136,14 +137,14 @@ export default function AddChangelogToPending() {
   }
 
   const startProcess = async () => {
-    if (!tenantId) { alert('⚠️ Please enter a Tenant ID'); return }
+    if (!repoUrl) { alert('⚠️ Please enter a Repository URL'); return }
     if (!jsonContent) { alert('⚠️ Please enter the changelog JSON content'); return }
     if (!commitMessage) { alert('⚠️ Please enter a commit message'); return }
     try { JSON.parse(jsonContent) } catch (e: unknown) { alert('⚠️ Invalid JSON: ' + (e instanceof Error ? e.message : String(e))); return }
 
     setLoading(true); setError(''); setLogHtml(''); setStepState('idle'); setSkipCallback(null)
     try {
-      const result = await api.rebaseClone(tenantId)
+      const result = await api.rebaseClone('', repoUrl)
       if (result.error) { setError(result.error); return }
       repoPathRef.current = result.repoPath
       setProducts(result.products)
@@ -159,14 +160,14 @@ export default function AddChangelogToPending() {
     <PageLayout title="Add Change Log File to Pending-Changes Branches" subtitle="Add a changelog JSON file to each product's pending-changes branch" icon="📝">
       <div className="content">
         <div className="info-box">
-          <strong>ℹ️ Info:</strong> Enter the tenant ID and the JSON content for the changelog file.
+          <strong>ℹ️ Info:</strong> Enter the tenant config repository URL and the JSON content for the changelog file.
           For each product with a <code>pending-changes</code> branch, the system will create
           <code>amt-product-config-bff/changes/&lt;uuid&gt;.json</code> inside the product directory, commit and push it.
         </div>
 
         <div className="form-group">
-          <label>🆔 Tenant ID (3-letter code)</label>
-          <input value={tenantId} onChange={e => setTenantId(e.target.value)} placeholder="e.g. abc" />
+          <label>📦 Tenant Config Repository URL</label>
+          <input value={repoUrl} onChange={e => setRepoUrl(e.target.value)} />
         </div>
         <div className="form-group">
           <label>📄 Changelog JSON Content</label>

@@ -4,6 +4,7 @@ import * as api from '../api'
 
 export default function RebasePendingChanges() {
   const [tenantId, setTenantId] = useState('')
+  const [repoUrl, setRepoUrl] = useState('https://git.shared.linearft.tools/odx-platform-configs/ODXP-DPLOY--odx-config-tenantId-deploy.git')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [repoPath, setRepoPath] = useState('')
@@ -109,10 +110,10 @@ export default function RebasePendingChanges() {
   const [continueCallback, setContinue] = useState<(() => void) | null>(null)
 
   const startProcess = async () => {
-    if (!tenantId) { alert('⚠️ Please enter a Tenant ID'); return }
+    if (!repoUrl) { alert('⚠️ Please enter a Repository URL'); return }
     setLoading(true); setError(''); setLogHtml(''); setStepState('idle')
     try {
-      const result = await api.rebaseClone(tenantId)
+      const result = await api.rebaseClone('', repoUrl)
       if (result.error) { setError(result.error); return }
       repoPathRef.current = result.repoPath
       setRepoPath(result.repoPath)
@@ -129,21 +130,19 @@ export default function RebasePendingChanges() {
     <PageLayout title="Rebase Pending Changes Branches" subtitle="Interactively rebase pending-changes branches onto master for each product" icon="🔀">
       <div className="content">
         <div className="info-box">
-          <strong>ℹ️ Info:</strong> Enter the 3-letter tenant ID. The system will clone the repo, find all products,
+          <strong>ℹ️ Info:</strong> Enter the tenant config repository URL. The system will clone the repo, find all products,
           and for each product check if a <code>pending-changes</code> branch exists. If it does, you will interactively
           step through the rebase process.
         </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label>🆔 Tenant ID (3-letter code)</label>
-            <input value={tenantId} onChange={e => setTenantId(e.target.value)} placeholder="e.g. abc"
-              onKeyDown={e => e.key === 'Enter' && startProcess()} />
-          </div>
-          <button className="btn btn-primary" disabled={loading} onClick={startProcess}>
-            {loading ? '⏳ Cloning...' : '🔀 Start'}
-          </button>
+        <div className="form-group">
+          <label>📦 Tenant Config Repository URL</label>
+          <input value={repoUrl} onChange={e => setRepoUrl(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && startProcess()} />
         </div>
+        <button className="btn btn-primary" disabled={loading} onClick={startProcess}>
+          {loading ? '⏳ Cloning...' : '🔀 Start'}
+        </button>
 
         {error && <div className="error-box">❌ {error}</div>}
         {loading && <div className="loading-spinner"><div className="spinner" /><p style={{ marginTop: 15 }}>Cloning repository and discovering products...</p></div>}

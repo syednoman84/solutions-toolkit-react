@@ -38,7 +38,7 @@ export const scanTenantsResults = (type: string): Promise<{ content: string; err
   fetch(`/api/scan-tenants/results/${type}`).then(json)
 
 // Rebase / Changelog
-export const rebaseClone = (tenantId: string): Promise<CloneResult> => post('/api/rebase/clone', { tenantId })
+export const rebaseClone = (tenantId: string, repoUrl?: string): Promise<CloneResult> => post('/api/rebase/clone', { tenantId, repoUrl })
 export const rebaseRunCommand = (repoPath: string, command: string): Promise<ScriptResult> =>
   post('/api/rebase/run-command', { repoPath, command })
 export const createChangelog = (repoPath: string, productId: string, jsonContent: string) =>
