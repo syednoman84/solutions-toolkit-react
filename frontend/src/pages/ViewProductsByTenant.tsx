@@ -45,9 +45,11 @@ export default function ViewProductsByTenant() {
             <input value={branchName} onChange={e => setBranchName(e.target.value)} placeholder="e.g. master"
               onKeyDown={e => e.key === 'Enter' && fetch()} />
           </div>
-          <button className="btn btn-primary" disabled={loading} onClick={fetch}>
-            {loading ? '⏳ Fetching...' : '🔍 Fetch Products'}
-          </button>
+          <div className="form-group" style={{ display: 'flex', alignItems: 'flex-end' }}>
+            <button className="btn btn-primary" disabled={loading} onClick={fetch} style={{ whiteSpace: 'nowrap' }}>
+              {loading ? '⏳ Fetching...' : '🔍 Fetch Products'}
+            </button>
+          </div>
         </div>
 
         {error && <div className="error-box">❌ {error}</div>}
