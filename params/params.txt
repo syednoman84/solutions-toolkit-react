@@ -9,6 +9,10 @@ tenant-domain=solutionstraining
 tenant-id=slt
 
 # List of Products to be created
+Consumer_CC_Product_1=P1
+Consumer_DAO_Product_1=P2
+SMB_DAO_Product_1=P3
+
 SSO_Connection_1=Velera Employee, SerProd1-slt-SAMLPD, /oauth2/authorization/connection90
 
 

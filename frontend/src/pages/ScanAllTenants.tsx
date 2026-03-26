@@ -84,6 +84,47 @@ export default function ScanAllTenants() {
     }
   }
 
+  const getProductTypeCounts = useCallback((): Record<string, number> => {
+    try {
+      const data = JSON.parse(reports.definitions || '{}')
+      const counts: Record<string, number> = {}
+      for (const repo of Object.keys(data)) {
+        for (const prod of data[repo]) {
+          const t = prod.productType || 'Unknown'
+          counts[t] = (counts[t] || 0) + 1
+        }
+      }
+      return counts
+    } catch { return {} }
+  }, [reports.definitions])
+
+  const renderHistogram = () => {
+    const counts = getProductTypeCounts()
+    const entries = Object.entries(counts).sort((a, b) => b[1] - a[1])
+    if (!entries.length) return null
+    const max = entries[0][1]
+    const total = entries.reduce((s, [, v]) => s + v, 0)
+    const colors = ['#0284c7', '#0369a1', '#075985', '#0ea5e9', '#38bdf8', '#7dd3fc', '#60a5fa', '#818cf8']
+    return (
+      <div style={{ marginBottom: 20, padding: 20, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+        <h4 style={{ color: '#334155', marginBottom: 15, fontSize: '0.95em' }}>📊 Product Type Distribution ({total} total)</h4>
+        {entries.map(([type, count], i) => (
+          <div key={type} style={{ display: 'flex', alignItems: 'center', marginBottom: 8, gap: 10 }}>
+            <div style={{ width: 160, fontSize: '0.82em', color: '#475569', textAlign: 'right', flexShrink: 0 }}>{type}</div>
+            <div style={{ flex: 1, background: '#e2e8f0', borderRadius: 4, height: 22, overflow: 'hidden' }}>
+              <div style={{
+                width: `${(count / max) * 100}%`, height: '100%',
+                background: colors[i % colors.length], borderRadius: 4,
+                display: 'flex', alignItems: 'center', paddingLeft: 8,
+                color: 'white', fontSize: '0.78em', fontWeight: 600, minWidth: 30,
+              }}>{count}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   return (
     <PageLayout title="Scan All Tenants" subtitle="Scan all tenant repositories and analyze product configurations" icon="📊">
       <div className="content">
@@ -115,6 +156,7 @@ export default function ScanAllTenants() {
 
         {showResults && (
           <div style={{ marginTop: 25 }}>
+            {renderHistogram()}
             <h3 style={{ color: '#495057', marginBottom: 0 }}>📁 Generated Reports</h3>
             <div className="result-tabs">
               {(['definitions', 'count', 'types'] as const).map(t => (
